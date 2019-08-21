@@ -5,8 +5,6 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
 COPY ["src/Robo.Api/Robo.Api.csproj", "src/Robo.Api/"]
-COPY ["src/Robo.Aplicacao/Robo.Aplicacao.csproj", "src/Robo.Aplicacao/"]
-COPY ["src/Robo.Dominio/Robo.Dominio.csproj", "src/Robo.Dominio/"]
 RUN dotnet restore "src/Robo.Api/Robo.Api.csproj"
 COPY . .
 WORKDIR "/src/src/Robo.Api"

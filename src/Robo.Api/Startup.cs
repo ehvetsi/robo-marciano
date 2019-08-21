@@ -3,8 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Robo.Aplicacao.Comandos;
+using Robo.IoC;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace Robo.Api
@@ -37,7 +36,9 @@ namespace Robo.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.TryAddScoped<IMovimentarRobo, MovimentarRobo>();
+
+            RegistrarDependencias.Registrar(services);
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1",
