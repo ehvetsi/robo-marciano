@@ -25,7 +25,7 @@ namespace Robo.Dominio.Testes
             var posicao = robo.ObterPosicao();
             Assert.Equal("(0,0,N)", posicao);
 
-            Assert.Equal("Fora do terreno", Assert.Throws<NegocioException>(() => robo.AplicarComando(comando)).Message);
+            Assert.Equal("Posição inválida", Assert.Throws<NegocioException>(() => robo.AplicarComando(comando)).Message);
         }
 
         [Fact]
